@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="signpost-core-1.2.1.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-8/filestore/oauth.signpost/signpost-core/1.2.1.1/jar/d1b39a438178bc885d724458de64cee33f1932a6/signpost-core-1.2.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-8/filestore/oauth.signpost/signpost-core/1.2.1.1/source/7a0bf693b51e1ffe1406cd04266bd6ca4044e51e/signpost-core-1.2.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,185 @@
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url('Lato-regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url('Lato-bold.woff') format('woff');
+}
+/* Typography */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+b, strong {
+  font-weight: bold;
+}
+blockquote {
+  margin: 1em 40px;
+}
+dfn {
+  font-style: italic;
+}
+h1, h2 {
+  margin: 0px;
+}
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+ins {
+  background: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+body {
+  font-family: 'Lato', Arial, serif;
+  background-color: #ECF4E2;
+}
+section.slide {
+  font-size: 26px;
+  color: #333;
+}
+section.slide .inner {
+  position: absolute;
+  overflow: hidden;
+  width: 1024px;
+  height: 768px;
+  left: 50%;
+  top: 50%;
+  margin-left: -512px;
+  margin-top: -384px;
+  padding: 30px 50px;
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-radius: 0px;
+  background: white url(logo.png) 814px 713px no-repeat;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  -moz-transition: -moz-transform 0.3s ease-out;
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+}
+section.slide .title-slide-content {
+  padding-top: 244px;
+  text-align: center;
+  width: 100%;
+}
+section.slide h1,
+section.slide h2,
+section.slide h3,
+section.slide h4,
+section.slide h5,
+section.slide h6 {
+  color: #007042;
+}
+section.slide h1, section.slide h2 {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  margin: 0;
+  padding: 0;
+}
+section.slide h1 {
+  /* reset styles from deck.js core styling */
+
+  top: 0 !important;
+  -webkit-transform: none !important;
+  -moz-transform: none !important;
+  -ms-transform: none !important;
+  -o-transform: none !important;
+  transform: none !important;
+  position: relative !important;
+  font-size: 114px;
+}
+section.slide h2 {
+  padding-bottom: .1em;
+  margin-bottom: .5em;
+  font-size: 64px;
+}
+section.slide aside.notes {
+  display: none;
+}
+section.slide pre {
+  border: none;
+  padding: 0;
+}
+section.slide code {
+  font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
+  font-size: 90%;
+  line-height: 1.4;
+}
+section.slide pre.code {
+  background-color: #FEFFE8;
+  border: 1px solid #007042;
+  box-shadow: 2px 2px 6px  #999;
+  padding: 8px;
+  border-radius: 6px;
+}
+section.slide blockquote {
+  font-family: "Hoefler Text", Constantia, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  border-left: 3px solid #CCC;
+  padding-left: 1em;
+}
+section.slide blockquote > :first-child:before {
+  content: "“";
+}
+section.slide blockquote > :last-child:after {
+  content: "”";
+}
+div.scale-selector {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border: 2px solid #666;
+  background-color: #ECF4E2;
+  border-radius: 6px;
+  padding: 20px;
+}
+div.deck-notes {
+  position: absolute;
+  z-index: 15;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  overflow-y: auto;
+  overflow-x: none;
+  font-size: 80%;
+  background-color: #FFF;
+  border: 2px solid #666;
+  border-bottom: none;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+div.deck-notes div.deck-notes-header {
+  width: 100%;
+  font-size: 1.2em;
+  padding: .3em .25em .15em .5em;
+}
+div.deck-notes div.deck-notes-container {
+  margin-top: 2px;
+  border-top: 1px solid #CCC;
+  padding: .625em;
+}
+div.deck-notes .notes {
+  display: block;
+}
+section.slide.first-slide .title-slide-content {
+  display: none;
+}
+section.slide.first-slide .inner {
+  background: #dddddd url("../img/title.png") no-repeat top left;
+}
+

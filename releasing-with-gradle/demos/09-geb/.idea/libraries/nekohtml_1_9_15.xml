@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="nekohtml-1.9.15">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-8/filestore/net.sourceforge.nekohtml/nekohtml/1.9.15/jar/a45cd7b7401d9c2264d4908182380452c03ebf8f/nekohtml-1.9.15.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-8/filestore/net.sourceforge.nekohtml/nekohtml/1.9.15/source/d5461cbe06afeda6bab7b6776659ac3cc6eae8e0/nekohtml-1.9.15-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

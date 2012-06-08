@@ -1,0 +1,182 @@
+<html>
+  <head>
+    <meta charset="utf-8" /> 
+    <title>Gradle</title> 
+    <script src="./deckjs/jquery-1.7.min.js"></script> 
+    <script src="./deckjs/modernizr.custom.js"></script> 
+    <script src="./deckjs/core/deck.core.js"></script> 
+    <link rel="stylesheet" href="./deckjs/core/deck.core.css" /> 
+    <link rel="stylesheet" href="./deckjs/themes/transition/horizontal-slide.css" /> 
+    <script src="./deckjs/extensions/hash/deck.hash.js"></script> 
+    <script src="./deckjs/extensions/notes/deck.notes.js"></script> 
+    <script src="./deckjs/extensions/clone/deck.clone.js"></script> 
+    <script src="./deckjs/extensions/scale-selector/deck.scale-selector.js"></script> 
+    <link rel="stylesheet" href="./deckjs/extensions/scale-selector/deck.scale-selector.css" /> 
+    <link rel="stylesheet" href="./style/code.less.css" /> 
+    <link rel="stylesheet" href="./style/slideshow.less.css" /> 
+    <script src="./init.js"></script>
+  </head> 
+  <body class=" deck-container"> 
+    <section class="slide first-slide title-slide">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Gradle</h1> 
+          <p>Building/Releasing Software</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>About Me</h2>
+        <ul> 
+          <li>Principal Engineer @ <a href="http://gradleware.com/">Gradleware</a></li> 
+          <li><a href="mailto:luke.daley@gradleware.com">luke.daley@gradleware.com</a></li> 
+          <li><a href="http://twitter.com/ldaley">@ldaley</a></li> 
+        </ul>
+      </div>   
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Agenda</h2>
+        <ol> 
+          <li>Show how to build &amp; test, then deploy <strong>your</strong> Groovy open source project to Maven Central.</li> 
+          <li>Show how to build Grails plugins in a Gradle build.</li> 
+          <li>Q&amp;A</li> 
+        </ol>
+      </div>   
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Sonatype OSS</h2>
+        <p>The simplest way to get in to Maven Central is via the Sonatype OSS Repo.</p>
+        <p>The detailed Usage Guide is <a href="https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide">here</a>.</p>
+      </div>    
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Prequirements</h2>
+        <h3>A group id</h3>
+        <p>Preferably a domain name that you own. Think about this before your first release. Changing is painful for you and your users.</p>
+        <h3>Source code online</h3>
+        <p>It is an open source repository.</p>
+      </div>      
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Registration</h2>
+        <p>Sign up for a Sonatype OSS account (creating a JIRA ticket)</p>
+        <p>This involves creating a JIRA ticket @ <a href="https://issues.sonatype.org/browse/OSSRH">https://issues.sonatype.org/browse/OSSRH</a></p>
+        <ul> 
+          <li>Summary - a brief introduction of your project</li> 
+          <li>groupId - the group id coordinates</li> 
+          <li>Project URL - location of the project website</li> 
+          <li>SCM URL - location of source control system</li> 
+          <li>Nexus Username - the JIRA Username you just signed up, one or more</li> 
+          <li>Already Sync To Central - does this project use the old rsync mechanism?</li> 
+          <li>Description - any other information you think we need to know</li> 
+        </ul>
+      </div>     
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Build requirements</h2>
+        <ul> 
+          <li>POM file</li> 
+          <li>Main jar</li> 
+          <li>Sources jar</li> 
+          <li>Javadoc jar</li> 
+          <li>Digital signatures</li> 
+        </ul>
+      </div>   
+    </section> 
+    <section class="slide title-slide">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Let's do it</h1> 
+          <p>Deploying to Maven Central</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>After <code><span class="java_plain">gradle&nbsp;uploadArchives</span></code></h2>
+        <p>Snapshots are available in the repo immediately.</p>
+        <p>Final releases go insto a “staging” area. After you've verified they are correct, you can promote.</p>
+      </div>    
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Producing mutiple artifacts</h2>
+        <p>Maven restricts you to one artifact per build.</p>
+        <p>You don't have the same restriction with Gradle.</p>
+      </div>    
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Grails Apps/Plugins</h2>
+        <p>Gradle can build Grails applications.</p>
+        <p><a href="https://github.com/grails/grails-gradle-plugin">https://github.com/grails/grails-gradle-plugin</a></p>
+        <p>Why?</p>
+        <ul> 
+          <li>Orchestration (i.e. larger build)</li> 
+          <li>Automation (multi version testing)</li> 
+          <li>Gradle dependency management</li> 
+        </ul>
+        <p>Similar to the Grails Maven support.</p>
+      </div>       
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Examples</h2>
+        <ul> 
+          <li>Geb</li> 
+          <li>Spock</li> 
+        </ul>
+      </div>   
+    </section> 
+    <section class="slide title-slide">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Summary</h1> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Maven Central Deployment</h2>
+        <p>It's easy to build and deploy projects to Maven Central with Gradle, and it's completely free.</p>
+        <p>There's a little bit of boilerplate to add. We will add a plugin for this.</p>
+        <p>There's a good Gradle guide <a href="http://jedicoder.blogspot.dk/2011/11/automated-gradle-project-deployment-to.html">online</a></p>
+      </div>     
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Multiple Artifacts</h2>
+        <p>It's possible with Gradle to publish multiple artifacts from the one project.</p>
+        <p>You'll have to do some configuration to specify how this should work.</p>
+        <p>We will provide plugins for common patterns (e.g. api &amp; impl)</p>
+      </div>     
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Grails Projects</h2>
+        <p>It's possible today to build &amp; release Grails projects with Gradle.</p>
+        <p>This will get better very soon.</p>
+      </div>    
+    </section> 
+    <section class="slide title-slide">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Q&amp;A</h1> 
+          <p>Yes, Gradle 1.0 will be out very soon.</p> 
+        </div>
+      </div>  
+    </section>   
+    <div class="deck-notes"> 
+      <div class="deck-notes-header">
+        Slide Notes…
+      </div> 
+      <div class="deck-notes-container"></div> 
+    </div> 
+  </body>
+</html>

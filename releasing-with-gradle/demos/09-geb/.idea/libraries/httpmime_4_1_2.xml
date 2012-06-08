@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="httpmime-4.1.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-8/filestore/org.apache.httpcomponents/httpmime/4.1.2/jar/c78eaaea68d0f36f73b646f08cdb34f1a784239b/httpmime-4.1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-8/filestore/org.apache.httpcomponents/httpmime/4.1.2/source/2b04a16191689ab8ab0c7ac738d20399ff1bdece/httpmime-4.1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

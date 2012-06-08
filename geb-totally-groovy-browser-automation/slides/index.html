@@ -1,0 +1,844 @@
+<html>
+  <head>
+    <meta charset="utf-8" /> 
+    <title>Geb - Groovy Browser Automation</title> 
+    <script src="./deckjs/jquery-1.7.min.js"></script> 
+    <script src="./deckjs/modernizr.custom.js"></script> 
+    <script src="./deckjs/core/deck.core.js"></script> 
+    <link rel="stylesheet" href="./deckjs/core/deck.core.css" /> 
+    <link rel="stylesheet" href="./deckjs/themes/transition/horizontal-slide.css" /> 
+    <script src="./deckjs/extensions/hash/deck.hash.js"></script> 
+    <script src="./deckjs/extensions/notes/deck.notes.js"></script> 
+    <script src="./deckjs/extensions/clone/deck.clone.js"></script> 
+    <script src="./deckjs/extensions/scale-selector/deck.scale-selector.js"></script> 
+    <link rel="stylesheet" href="./deckjs/extensions/scale-selector/deck.scale-selector.css" /> 
+    <link rel="stylesheet" href="./style/code.less.css" /> 
+    <link rel="stylesheet" href="./style/slideshow.less.css" /> 
+    <script src="./init.js"></script>
+  </head> 
+  <body class=" deck-container"> 
+    <section class="slide first-slide title-slide" id="slide-1">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Geb</h1> 
+          <p>Totally Groovy Browser Automation</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide" id="slide-2">
+      <div class="inner">
+        <h2>What is Geb?</h2>
+        <p>Geb is a <strong>browser automation solution</strong>.</p>
+        <p>You can use it for…</p>
+        <ul> 
+          <li>Acceptance Testing Web Applications</li> 
+          <li>Automating Web Sites</li> 
+          <li>Screen Scraping</li> 
+        </ul>
+        <p>It brings together the…</p>
+        <ul> 
+          <li>Cross browser automation capabilities of <em>WebDriver</em></li> 
+          <li>Elegance of <em>jQuery</em> content selection</li> 
+          <li>Expressiveness of the <em>Groovy</em> language</li> 
+          <li>Robustness of <em>Page Object</em> modelling</li> 
+        </ul>
+      </div>       
+    </section> 
+    <section class="slide" id="slide-3">
+      <div class="inner">
+        <h2>About the Project</h2>
+        <p>Free Open Source, Apache License, Version 2.0.</p>
+        <p>Currently at version <strong>0.7.0</strong>.</p>
+        <ul> 
+          <li>Home Page — <a href="http://www.gebish.org">http://www.gebish.org</a></li> 
+          <li>The Book of Geb — <a href="http://www.gebish.org/manual/current">http://www.gebish.org/manual/current</a></li> 
+          <li>Source Code — <a href="https://github.com/geb/geb">https://github.com/geb/geb</a></li> 
+          <li>User Mailing List — <a href="http://xircles.codehaus.org/projects/geb/lists">http://xircles.codehaus.org/projects/geb/lists</a></li> 
+          <li>In Maven Central — <a href="http://mvnrepository.com/artifact/org.codehaus.geb">http://mvnrepository.com/artifact/org.codehaus.geb</a></li> 
+        </ul>
+        <p>Built by <a href="http://www.gradle.org">Gradle</a>, naturally.</p>
+      </div>      
+    </section> 
+    <section class="slide" id="slide-4">
+      <div class="inner">
+        <h2>Project Components</h2>
+        <p>The heart is the <strong>geb-core</strong> component which is all you really need (plus WebDriver).</p>
+        <p>For testing, you probably also want one of these as well:</p>
+        <ul> 
+          <li>geb-spock</li> 
+          <li>geb-junit3</li> 
+          <li>geb-junit4</li> 
+          <li>geb-testng</li> 
+          <li>geb-easyb</li> 
+        </ul>
+        <p>(Has been used from Cucumber as well).</p>
+        <p>There is also a Grails plugin.</p>
+      </div>       
+    </section> 
+    <section class="slide title-slide" id="slide-5">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>WebDriver</h1> 
+          <p><a href="http://seleniumhq.org/projects/webdriver/">http://seleniumhq.org/projects/webdriver/</a></p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide" id="slide-6">
+      <div class="inner">
+        <h2>WebDriver</h2>
+        <p>Successor to the Selenium project.</p>
+        <p>Also known as “Selenium 2”.</p>
+        <p>Sponsored and driven by Google.</p>
+        <p>Becoming a W3C standard.</p>
+        <p><a href="http://dvcs.w3.org/hg/webdriver/raw-file/515b648d58ff/webdriver-spec.html">http://dvcs.w3.org/hg/webdriver/raw-file/515b648d58ff/webdriver-spec.html</a></p>
+      </div>       
+    </section> 
+    <section class="slide" id="slide-7">
+      <div class="inner">
+        <h2>Cross-browser automation</h2>
+        <p>Java based, with many language bindings.</p>
+        <pre class=" code"><code><span class="java_keyword">import</span><span class="java_plain">&nbsp;org</span><span class="java_separator">.</span><span class="java_plain">openqa</span><span class="java_separator">.</span><span class="java_plain">selenium</span><span class="java_separator">.</span><span class="java_type">WebDriver</span><span class="java_separator">;</span><span class="java_plain"></span>
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;org</span><span class="java_separator">.</span><span class="java_plain">openqa</span><span class="java_separator">.</span><span class="java_plain">selenium</span><span class="java_separator">.</span><span class="java_type">WebElement</span><span class="java_separator">;</span><span class="java_plain"></span>
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;org</span><span class="java_separator">.</span><span class="java_plain">openqa</span><span class="java_separator">.</span><span class="java_plain">selenium</span><span class="java_separator">.</span><span class="java_type">By</span><span class="java_separator">;</span><span class="java_plain"></span>
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;org</span><span class="java_separator">.</span><span class="java_plain">openqa</span><span class="java_separator">.</span><span class="java_plain">selenium</span><span class="java_separator">.</span><span class="java_plain">firefox</span><span class="java_separator">.</span><span class="java_type">FirefoxDriver</span><span class="java_separator">;</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_type">WebDriver</span><span class="java_plain">&nbsp;driver&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">FirefoxDriver</span><span class="java_separator">();</span><span class="java_plain"></span>
+<span class="java_plain">driver</span><span class="java_separator">.</span><span class="java_plain">get</span><span class="java_separator">(</span><span class="java_literal">&quot;http://google.com&quot;</span><span class="java_separator">);</span><span class="java_plain"></span>
+<span class="java_type">WebElement</span><span class="java_plain">&nbsp;heading&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;driver</span><span class="java_separator">.</span><span class="java_plain">findElement</span><span class="java_separator">(</span><span class="java_type">By</span><span class="java_separator">.</span><span class="java_plain">tagName</span><span class="java_separator">(</span><span class="java_literal">&quot;h1&quot;</span><span class="java_separator">));</span><span class="java_plain"></span></code></pre>
+        <p><img src="img/browsers.png" style="margin-top: 2em" /></p>
+      </div>     
+    </section> 
+    <section class="slide" id="slide-8">
+      <div class="inner">
+        <h2>Mobile Browsers</h2>
+        <p>Rapidly improving.</p>
+        <ul> 
+          <li>iPad</li> 
+          <li>iPhone</li> 
+          <li>Android</li> 
+          <li>Blackberry</li> 
+        </ul>
+        <p>Can use real devices or emulators in most cases.</p>
+        <p>A headless webkit based driver (PhantomJS) is in progress.</p>
+      </div>      
+    </section> 
+    <section class="slide" id="slide-9">
+      <div class="inner">
+        <h2>WebDriver API</h2>
+        <p>Geb sits on top of WebDriver so you very rarely deal with its API, though it's accessible if you need it.</p>
+        <p>Geb never talks to the actual browser. </p>
+        <p>That's what WebDriver does.</p>
+      </div>     
+    </section> 
+    <section class="slide" id="slide-10">
+      <div class="inner">
+        <h2>Driver dependency</h2>
+        <p>You need to pull in a specific driver implementation for each browser you want to work with.</p>
+        <pre class=" code"><code><span class="java_operator">&lt;</span><span class="java_plain">dependency</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;</span><span class="java_operator">&lt;</span><span class="java_plain">groupId</span><span class="java_operator">&gt;</span><span class="java_plain">org</span><span class="java_separator">.</span><span class="java_plain">seleniumhq</span><span class="java_separator">.</span><span class="java_plain">selenium</span><span class="java_operator">&lt;/</span><span class="java_plain">groupId</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;</span><span class="java_operator">&lt;</span><span class="java_plain">artifactId</span><span class="java_operator">&gt;</span><span class="java_plain">selenium</span><span class="java_operator">-</span><span class="java_plain">firefox</span><span class="java_operator">-</span><span class="java_plain">driver</span><span class="java_operator">&lt;/</span><span class="java_plain">artifactId</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;</span><span class="java_operator">&lt;</span><span class="java_plain">version</span><span class="java_operator">&gt;</span><span class="java_literal">2.22.0</span><span class="java_operator">&lt;/</span><span class="java_plain">version</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_operator">&lt;/</span><span class="java_plain">dependency</span><span class="java_operator">&gt;</span><span class="java_plain"></span></code></pre>
+      </div>    
+    </section> 
+    <section class="slide title-slide" id="slide-11">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>jQuery</h1> 
+          <p><a href="http://jquery.com/">http://jquery.com/</a></p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide" id="slide-12">
+      <div class="inner">
+        <h2>jQuery - write more, do less</h2>
+        <p>jQuery provides an incredibly powerful API for navigating and selecting content.</p>
+        <pre class=" code"><code><span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;div#footer&quot;</span><span class="java_separator">).</span><span class="java_plain">prev</span><span class="java_separator">().</span><span class="java_plain">children</span><span class="java_separator">();</span><span class="java_plain"></span></code></pre>
+        <p>CSS based, a whole lot better than XPath.</p>
+      </div>     
+    </section> 
+    <section class="slide" id="slide-13">
+      <div class="inner">
+        <h2>Geb's inspiration</h2>
+        <p>Geb features a “Navigator API” that is inspired by jQuery.</p>
+        <pre class=" code"><code><span class="java_comment">//&nbsp;This&nbsp;is&nbsp;Geb&nbsp;code,&nbsp;not&nbsp;jQuery&nbsp;JavaScript…</span>
+<span class="java_plain"></span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;h1&quot;</span><span class="java_separator">).</span><span class="java_plain">previous</span><span class="java_separator">().</span><span class="java_plain">children</span><span class="java_separator">();</span><span class="java_plain"></span></code></pre>
+        <p>API is not identical.</p>
+      </div>     
+    </section> 
+    <section class="slide title-slide" id="slide-14">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Groovy</h1> 
+          <p><a href="http://groovy-lang.org">http://groovy-lang.org</a></p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide" id="slide-15">
+      <div class="inner">
+        <h2>Dynamic JVM Language</h2>
+        <p>Groovy is…</p>
+        <ul> 
+          <li>Compiled, never interpreted</li> 
+          <li>Dynamic, optionally typed</li> 
+          <li>99% Java syntax compatible</li> 
+          <li>Concise, clear and pragmattic</li> 
+          <li>Great for DSLs</li> 
+        </ul>
+      </div>    
+    </section> 
+    <section class="slide" id="slide-16">
+      <div class="inner">
+        <h2>Geb &amp; Groovy</h2>
+        <p>Geb uses Groovy's dynamism to remove boilerplate.</p>
+        <pre class=" code"><code><span class="java_keyword">import</span><span class="java_plain">&nbsp;geb</span><span class="java_separator">.</span><span class="java_operator">*</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_type">Browser</span><span class="java_separator">.</span><span class="java_plain">drive&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;</span><span class="java_type">GoogleHomePage</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;at&nbsp;</span><span class="java_type">GoogleHomePage</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;search</span><span class="java_separator">.</span><span class="java_plain">forTerm&nbsp;</span><span class="java_literal">&quot;wikipedia&quot;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;at&nbsp;</span><span class="java_type">GoogleResultsPage</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">assert</span><span class="java_plain">&nbsp;firstResultLink</span><span class="java_separator">.</span><span class="java_plain">text</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Wikipedia&quot;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;firstResultLink</span><span class="java_separator">.</span><span class="java_plain">click</span><span class="java_separator">()</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;waitFor&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;at&nbsp;</span><span class="java_type">WikipediaPage</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>* As of Geb 0.7.0 also uses Groovy's compile time transfomations for better error diagnostics.</p>
+      </div>     
+    </section> 
+    <section class="slide title-slide" id="slide-17">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Demo</h1> 
+          <p>Google for Wikipedia</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide title-slide" id="slide-18">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Page Objects</h1> 
+          <p><strong>The</strong> key to not pulling your hair out when dealing with web tests.</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide" id="slide-19">
+      <div class="inner">
+        <h2>What are they?</h2>
+        <p>In a phrase: Domain Modelling.</p>
+        <p>By modelling and creating <em>abstractions</em>, we can isolate implementation detail.</p>
+        <pre class=" code"><code><span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;input[name=username]&quot;</span><span class="java_separator">).</span><span class="java_plain">value</span><span class="java_separator">(</span><span class="java_literal">&quot;user&quot;</span><span class="java_separator">)</span><span class="java_plain"></span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;input[name=username]&quot;</span><span class="java_separator">).</span><span class="java_plain">value</span><span class="java_separator">(</span><span class="java_literal">&quot;password&quot;</span><span class="java_separator">)</span><span class="java_plain"></span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;input[type=submit]&quot;</span><span class="java_separator">).</span><span class="java_plain">click</span><span class="java_separator">()</span><span class="java_plain"></span></code></pre>
+        <p>Is far more fragile than this…</p>
+        <pre class=" code"><code><span class="java_type">void</span><span class="java_plain">&nbsp;login</span><span class="java_separator">(</span><span class="java_type">String</span><span class="java_plain">&nbsp;username</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_type">String</span><span class="java_plain">&nbsp;password</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;input[name=username]&quot;</span><span class="java_separator">).</span><span class="java_plain">value</span><span class="java_separator">(</span><span class="java_plain">username</span><span class="java_separator">)</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;input[name=username]&quot;</span><span class="java_separator">).</span><span class="java_plain">value</span><span class="java_separator">(</span><span class="java_plain">password</span><span class="java_separator">)</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;input[type=submit]&quot;</span><span class="java_separator">).</span><span class="java_plain">click</span><span class="java_separator">()</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">login</span><span class="java_separator">(</span><span class="java_literal">&quot;user&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;password&quot;</span><span class="java_separator">)</span><span class="java_plain"></span></code></pre>
+      </div>       
+    </section> 
+    <section class="slide" id="slide-20">
+      <div class="inner">
+        <h2>Just good programming</h2>
+        <p>It's the application of trusted principles; encapsulation and reuse.</p>
+        <p>Not new at all, but new to the world of web testing/automation.</p>
+        <p>Not just about modelling “pages”. It's about modelling all kinds of things in the domain of a user's actions online.</p>
+        <p>Just giving symbolic names to page content is a great start.</p>
+      </div>      
+    </section> 
+    <section class="slide" id="slide-21">
+      <div class="inner">
+        <h2>Browser has-a Page</h2>
+        <pre class=" code"><code><span class="java_type">Browser</span><span class="java_separator">.</span><span class="java_plain">drive&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;</span><span class="java_type">GoogleHomePage</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;at&nbsp;</span><span class="java_type">GoogleHomePage</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;search</span><span class="java_separator">.</span><span class="java_plain">forTerm&nbsp;</span><span class="java_literal">&quot;wikipedia&quot;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;at&nbsp;</span><span class="java_type">GoogleResultsPage</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">assert</span><span class="java_plain">&nbsp;firstResultLink</span><span class="java_separator">.</span><span class="java_plain">text</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Wikipedia&quot;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;firstResultLink</span><span class="java_separator">.</span><span class="java_plain">click</span><span class="java_separator">()</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;waitFor&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;at&nbsp;</span><span class="java_type">WikipediaPage</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>The <code><span class="java_plain">to</span><span class="java_separator">()</span><span class="java_plain"></span></code> and <code><span class="java_plain">click</span><span class="java_separator">()</span><span class="java_plain"></span></code> methods are changing the underlying page.</p>
+        <p>You can refer to the current page's content and methods just by name.</p>
+        <aside class="notes"> 
+          <p>This is the first introduction to all of the dynamic dispatch stuff. Might deserve a better treatment.</p> 
+        </aside>
+      </div>      
+    </section> 
+    <section class="slide" id="slide-22">
+      <div class="inner">
+        <h2>Geb's Page Objects</h2>
+        <p>Geb builds the Page Object pattern directly into the framework (though it is optional).</p>
+        <pre class=" code"><code><span class="java_keyword">import</span><span class="java_plain">&nbsp;geb</span><span class="java_separator">.</span><span class="java_operator">*</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">GoogleHomePage</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Page</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;url&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;http://google.com/ncr&quot;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;at&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;title&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Google&quot;</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;content&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;module&nbsp;</span><span class="java_type">GoogleSearchModule</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+      </div>    
+    </section> 
+    <section class="slide" id="slide-23">
+      <div class="inner">
+        <h2>Geb's Page Objects</h2>
+        <p>Features the “Content DSL” for naming content in a dynamic and powerful way.</p>
+        <pre class=" code"><code><span class="java_keyword">import</span><span class="java_plain">&nbsp;geb</span><span class="java_separator">.</span><span class="java_operator">*</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">GoogleResultsPage</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Page</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;at&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;waitFor&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;title</span><span class="java_separator">.</span><span class="java_plain">endsWith</span><span class="java_separator">(</span><span class="java_literal">&quot;Google&nbsp;Search&quot;</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;content&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;module&nbsp;</span><span class="java_type">GoogleSearchModule</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;results&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;li.g&quot;</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;i&nbsp;</span><span class="java_operator">-&gt;</span><span class="java_plain">&nbsp;results</span><span class="java_separator">[</span><span class="java_plain">i</span><span class="java_separator">]</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultLink&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;i&nbsp;</span><span class="java_operator">-&gt;</span><span class="java_plain">&nbsp;result</span><span class="java_separator">(</span><span class="java_plain">i</span><span class="java_separator">).</span><span class="java_plain">find</span><span class="java_separator">(</span><span class="java_literal">&quot;a.l&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">0</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;firstResultLink&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;resultLink</span><span class="java_separator">(</span><span class="java_literal">0</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>More on this later.</p>
+      </div>     
+    </section> 
+    <section class="slide" id="slide-24">
+      <div class="inner">
+        <h2>Geb's Page Objects</h2>
+        <p>Very lightweight, minimum requirements are low.</p>
+        <pre class=" code"><code><span class="java_keyword">import</span><span class="java_plain">&nbsp;geb</span><span class="java_separator">.</span><span class="java_operator">*</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">WikipediaPage</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Page</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;at&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;title&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Wikipedia&quot;</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>You can pick which Page Object features you want.</p>
+      </div>     
+    </section> 
+    <section class="slide" id="slide-25">
+      <div class="inner">
+        <h2>Modules</h2>
+        <p>Modules are repeating and/or reappearing content.</p>
+        <pre class=" code"><code><span class="java_keyword">import</span><span class="java_plain">&nbsp;geb</span><span class="java_separator">.</span><span class="java_operator">*</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">GoogleSearchModule</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Module</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;content&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;field&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;input&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;name</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;q&quot;</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;button</span><span class="java_separator">(</span><span class="java_plain">to</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_type">GoogleResultsPage</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;btnG</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;forTerm</span><span class="java_separator">(</span><span class="java_plain">term</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;field</span><span class="java_separator">.</span><span class="java_plain">value&nbsp;term</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;waitFor&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;button</span><span class="java_separator">.</span><span class="java_plain">displayed&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;button</span><span class="java_separator">.</span><span class="java_plain">click</span><span class="java_separator">()</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+      </div>    
+    </section> 
+    <section class="slide" id="slide-26">
+      <div class="inner">
+        <h2>Modules</h2>
+        <pre class=" code"><code><span class="java_operator">&lt;</span><span class="java_plain">table&nbsp;id</span><span class="java_operator">=</span><span class="java_literal">&quot;book-results&quot;</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;</span><span class="java_operator">&lt;</span><span class="java_plain">thead</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_operator">&lt;</span><span class="java_plain">tr</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_operator">&lt;</span><span class="java_plain">th</span><span class="java_operator">&gt;</span><span class="java_type">Title</span><span class="java_operator">&lt;/</span><span class="java_plain">th</span><span class="java_operator">&gt;&lt;</span><span class="java_plain">th</span><span class="java_operator">&gt;</span><span class="java_type">Author</span><span class="java_operator">&lt;/</span><span class="java_plain">th</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_operator">&lt;/</span><span class="java_plain">tr</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;</span><span class="java_operator">&lt;/</span><span class="java_plain">thead</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;</span><span class="java_operator">&lt;</span><span class="java_plain">tbody</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_operator">&lt;</span><span class="java_plain">tr</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_operator">&lt;</span><span class="java_plain">td</span><span class="java_operator">&gt;</span><span class="java_type">Zero</span><span class="java_plain">&nbsp;</span><span class="java_type">History</span><span class="java_operator">&lt;/</span><span class="java_plain">td</span><span class="java_operator">&gt;&lt;</span><span class="java_plain">td</span><span class="java_operator">&gt;</span><span class="java_type">William</span><span class="java_plain">&nbsp;</span><span class="java_type">Gibson</span><span class="java_operator">&lt;/</span><span class="java_plain">td</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_operator">&lt;/</span><span class="java_plain">tr</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_operator">&lt;</span><span class="java_plain">tr</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_operator">&lt;</span><span class="java_plain">td</span><span class="java_operator">&gt;</span><span class="java_type">The</span><span class="java_plain">&nbsp;</span><span class="java_type">Evolutionary</span><span class="java_plain">&nbsp;</span><span class="java_type">Void</span><span class="java_operator">&lt;/</span><span class="java_plain">td</span><span class="java_operator">&gt;&lt;</span><span class="java_plain">td</span><span class="java_operator">&gt;</span><span class="java_type">Peter</span><span class="java_plain">&nbsp;F</span><span class="java_separator">.</span><span class="java_plain">&nbsp;</span><span class="java_type">Hamilton</span><span class="java_operator">&lt;/</span><span class="java_plain">td</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_operator">&lt;/</span><span class="java_plain">tr</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;</span><span class="java_operator">&lt;/</span><span class="java_plain">tbody</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_operator">&lt;/</span><span class="java_plain">table</span><span class="java_operator">&gt;</span><span class="java_plain"></span></code></pre>
+        <p>Modules can be used for repeating content.</p>
+      </div>    
+    </section> 
+    <section class="slide" id="slide-27">
+      <div class="inner">
+        <h2>Modules</h2>
+        <p>Modules have a <em>base</em>, from which all content lookups are relative.</p>
+        <pre class=" code"><code><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">BooksPage</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Page</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;content&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;bookResults&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;module&nbsp;</span><span class="java_type">BookRow</span><span class="java_separator">,</span><span class="java_plain">&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;table#book-results&nbsp;tbody&nbsp;tr&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;it</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">BookRow</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Module</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;content&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;cell&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;td&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;it</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;cell</span><span class="java_separator">(</span><span class="java_literal">0</span><span class="java_separator">).</span><span class="java_plain">text</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;author&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;cell</span><span class="java_separator">(</span><span class="java_literal">1</span><span class="java_separator">).</span><span class="java_plain">text</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+      </div>    
+    </section> 
+    <section class="slide" id="slide-28">
+      <div class="inner">
+        <h2>Modules</h2>
+        <p>We now have a model for a row in our table.</p>
+        <pre class=" code"><code><span class="java_plain">expect</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span>
+<span class="java_plain">bookResults</span><span class="java_separator">(</span><span class="java_literal">0</span><span class="java_separator">).</span><span class="java_plain">title&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Zero&nbsp;History&quot;</span><span class="java_plain">&nbsp;</span>
+<span class="java_plain">bookResults</span><span class="java_separator">(</span><span class="java_literal">1</span><span class="java_separator">).</span><span class="java_plain">author&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Peter&nbsp;F.&nbsp;Hamilton</span></code></pre>
+        <p>Can be used for any reused/repeating content.</p>
+        <p><strong>Note:</strong> talking about domain objects, not HTML tables and rows.</p>
+      </div>      
+    </section> 
+    <section class="slide" id="slide-29">
+      <div class="inner">
+        <h2>Inheritance</h2>
+        <p>Pages (and modules) can be arranged in inheritance hierarchies.</p>
+        <pre class=" code"><code><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">Footer</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Module</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;content&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copyright&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;p.copyright&quot;</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">StandardPage</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Page</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;content&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;footer&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;module&nbsp;</span><span class="java_type">Footer</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">FrontPage</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">StandardPage</span><span class="java_plain">&nbsp;</span><span class="java_separator">{}</span><span class="java_plain"></span></code></pre>
+        <p>The front page will <em>inherit</em> the “footer” content definition.</p>
+      </div>     
+    </section> 
+    <section class="slide title-slide" id="slide-30">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Testing</h1> 
+          <p>Geb's testing adapters</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide" id="slide-31">
+      <div class="inner">
+        <h2>Geb for Testing</h2>
+        <p>Geb can be used with…</p>
+        <ul> 
+          <li>Spock</li> 
+          <li>JUnit (3 &amp; 4)</li> 
+          <li>TestNG</li> 
+          <li>EasyB</li> 
+          <li>Cucumber (Cuke4Duke)</li> 
+        </ul>
+        <p>The majority of Geb users use Spock.</p>
+        <p>Geb can dump HTML and screenshots for each “test” to help in debugging.</p>
+      </div>      
+    </section> 
+    <section class="slide title-slide" id="slide-32">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Demo</h1> 
+          <p>Geb Testing</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide title-slide" id="slide-33">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Navigator API</h1> 
+          <p>jQuery inspired content selection/navigation</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide" id="slide-34">
+      <div class="inner">
+        <h2>The $() method</h2>
+        <p>Returns a <a href="http://www.gebish.org/manual/current/api/geb-core/geb/navigator/Navigator.html">Navigator</a> object.</p>
+        <p>General format:</p>
+        <pre class=" code"><code><span class="java_plain">$</span><span class="java_separator">(</span><span class="java_plain">&laquo;css&nbsp;selector&raquo;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;&laquo;index</span><span class="java_operator">/</span><span class="java_plain">range&raquo;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;&laquo;attribute</span><span class="java_operator">/</span><span class="java_plain">text&nbsp;matchers&raquo;</span><span class="java_separator">)</span><span class="java_plain"></span></code></pre>
+        <p>Examples:</p>
+        <pre class=" code"><code><span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;div&quot;</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_comment">//&nbsp;all&nbsp;divs</span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;div&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">0</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_comment">//&nbsp;first&nbsp;div</span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;div&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">0..2</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_comment">//&nbsp;first&nbsp;three&nbsp;divs</span>
+<span class="java_plain"></span>
+<span class="java_comment">//&nbsp;The&nbsp;third&nbsp;section&nbsp;heading&nbsp;with&nbsp;text&nbsp;“Geb”</span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;h2&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">2</span><span class="java_separator">,</span><span class="java_plain">&nbsp;id</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;section&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;text</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Geb&quot;</span><span class="java_separator">)</span><span class="java_plain"></span></code></pre>
+      </div>       
+    </section> 
+    <section class="slide" id="slide-35">
+      <div class="inner">
+        <h2>CSS Selectors</h2>
+        <p>Full CSS3 if the target browser supports it.</p>
+        <pre class=" code"><code><span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;div.some-class&nbsp;p:first[title='something']&quot;</span><span class="java_separator">)</span><span class="java_plain"></span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;ul&nbsp;li&nbsp;a&quot;</span><span class="java_separator">)</span><span class="java_plain"></span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;table&nbsp;tr:nth-child(2n+1)&nbsp;td&quot;</span><span class="java_separator">)</span><span class="java_plain"></span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;div#content&nbsp;p:first-child::first-line&quot;</span><span class="java_separator">)</span><span class="java_plain"></span></code></pre>
+        <p>CSS lookups are <em>fast</em>.</p>
+      </div>     
+    </section> 
+    <section class="slide" id="slide-36">
+      <div class="inner">
+        <h2>Attribute/Text matching</h2>
+        <p>Can match on attribute values:</p>
+        <pre class=" code"><code><span class="java_comment">//&lt;div&nbsp;foo=&quot;bar&quot;&gt;</span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;div&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;foo</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;bar&quot;</span><span class="java_separator">)</span><span class="java_plain"></span></code></pre>
+        <p>The “text” attribute is special:</p>
+        <pre class=" code"><code><span class="java_comment">//&lt;div&gt;foo&lt;/div&gt;</span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;div&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;text</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;foo&quot;</span><span class="java_separator">)</span><span class="java_plain"></span></code></pre>
+        <p>Can use Regular Expressions:</p>
+        <pre class=" code"><code><span class="java_comment">//&lt;div&gt;foo&lt;/div&gt;</span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;div&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;text</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_operator">~/</span><span class="java_plain">f</span><span class="java_separator">.</span><span class="java_operator">+/</span><span class="java_separator">)</span><span class="java_plain"></span></code></pre>
+      </div>        
+    </section> 
+    <section class="slide" id="slide-37">
+      <div class="inner">
+        <h2>Predicates</h2>
+        <p>Geb supplies some handy predicates:</p>
+        <pre class=" code"><code><span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;p&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;text</span><span class="java_operator">:</span><span class="java_plain">&nbsp;startsWith</span><span class="java_separator">(</span><span class="java_literal">&quot;p&quot;</span><span class="java_separator">))</span><span class="java_plain"></span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;p&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_keyword">class</span><span class="java_operator">:</span><span class="java_plain">&nbsp;contains</span><span class="java_separator">(</span><span class="java_literal">&quot;section&quot;</span><span class="java_separator">))</span><span class="java_plain"></span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;p&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;id</span><span class="java_operator">:</span><span class="java_plain">&nbsp;endsWith</span><span class="java_separator">(</span><span class="java_operator">~/</span><span class="java_plain">\d</span><span class="java_operator">/</span><span class="java_separator">))</span><span class="java_plain"></span></code></pre>
+        <p>There are <a href="http://www.gebish.org/manual/current/navigator.html#attribute_and_text_matching">more of these</a>.</p>
+      </div>     
+    </section> 
+    <section class="slide" id="slide-38">
+      <div class="inner">
+        <h2>Relative Content</h2>
+        <p><code><span class="java_plain">$</span><span class="java_separator">()</span><span class="java_plain"></span></code> returns a <a href="http://www.gebish.org/manual/current/api/geb-core/geb/navigator/Navigator.html">Navigator</a> that allows you to find relative content.</p>
+        <pre class=" code"><code><span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;p&quot;</span><span class="java_separator">).</span><span class="java_plain">previous</span><span class="java_separator">()</span><span class="java_plain"></span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;p&quot;</span><span class="java_separator">).</span><span class="java_plain">prevAll</span><span class="java_separator">()</span><span class="java_plain"></span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;p&quot;</span><span class="java_separator">).</span><span class="java_plain">next</span><span class="java_separator">()</span><span class="java_plain"></span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;p&quot;</span><span class="java_separator">).</span><span class="java_plain">nextAll</span><span class="java_separator">()</span><span class="java_plain"></span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;p&quot;</span><span class="java_separator">).</span><span class="java_plain">parent</span><span class="java_separator">()</span><span class="java_plain"></span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;p&quot;</span><span class="java_separator">).</span><span class="java_plain">siblings</span><span class="java_separator">()</span><span class="java_plain"></span>
+<span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;div&quot;</span><span class="java_separator">).</span><span class="java_plain">children</span><span class="java_separator">()</span><span class="java_plain"></span></code></pre>
+        <p>Most of these methods take selectors, indexes and attribute text/matchers too.</p>
+        <pre class=" code"><code><span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;p&quot;</span><span class="java_separator">).</span><span class="java_plain">nextAll</span><span class="java_separator">(</span><span class="java_literal">&quot;.listing&quot;</span><span class="java_separator">)</span><span class="java_plain"></span></code></pre>
+      </div>      
+    </section> 
+    <section class="slide title-slide" id="slide-39">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Content DSL</h1> 
+          <p>Reuse FTW</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide" id="slide-40">
+      <div class="inner">
+        <h2>Content DSL</h2>
+        <pre class=" code"><code><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">GoogleResultsPage</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Page</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;content&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;results&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;li.g&quot;</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;i&nbsp;</span><span class="java_operator">-&gt;</span><span class="java_plain">&nbsp;results</span><span class="java_separator">[</span><span class="java_plain">i</span><span class="java_separator">]</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultLink&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;i&nbsp;</span><span class="java_operator">-&gt;</span><span class="java_plain">&nbsp;result</span><span class="java_separator">(</span><span class="java_plain">i</span><span class="java_separator">).</span><span class="java_plain">find</span><span class="java_separator">(</span><span class="java_literal">&quot;a.l&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">0</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;firstResultLink&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;resultLink</span><span class="java_separator">(</span><span class="java_literal">0</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>Content definitions can <em>build</em> upon each other.</p>
+        <p>Content definitions are actually <em>templates</em>.</p>
+      </div>     
+    </section> 
+    <section class="slide" id="slide-41">
+      <div class="inner">
+        <h2>Optional Content</h2>
+        <pre class=" code"><code><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">OptionalPage</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Page</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;content&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errorMsg</span><span class="java_separator">(</span><span class="java_plain">required</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_literal">false</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;p.errorMsg&quot;</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>By default, Geb will error if the content you select doesn't exist.</p>
+        <p>The “<code><span class="java_plain">required</span></code>” option disables this check.</p>
+      </div>     
+    </section> 
+    <section class="slide" id="slide-42">
+      <div class="inner">
+        <h2>Dynamic Content</h2>
+        <pre class=" code"><code><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">DynamicPage</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Page</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;content&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errorMsg</span><span class="java_separator">(</span><span class="java_plain">wait</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_literal">true</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;p.errorMsg&quot;</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>Geb will wait for some time for this content to appear.</p>
+        <p>By default, it will look for it every 100ms for 5s before giving up. This is highly configurable.</p>
+        <p>Same semantics as the <code><span class="java_plain">waitFor&nbsp;</span><span class="java_separator">{}</span><span class="java_plain"></span></code> method that can be used anywhere.</p>
+      </div>      
+    </section> 
+    <section class="slide" id="slide-43">
+      <div class="inner">
+        <h2>Expensive Content</h2>
+        <pre class=" code"><code><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">ExpensivePage</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Page</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;content&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;results</span><span class="java_separator">(</span><span class="java_plain">cache</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_literal">true</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;li.results&quot;</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;results</span><span class="java_separator">[</span><span class="java_plain">it</span><span class="java_separator">]</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>By default, all content is transient.</p>
+        <p>The <code><span class="java_plain">cache</span></code> option instructs Geb to hold on to the content, avoiding redundant lookups.</p>
+        <p>Use carefully, can cause problems with dynamic pages.</p>
+      </div>      
+    </section> 
+    <section class="slide title-slide" id="slide-44">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Navigation</h1> 
+          <p>Getting around</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide" id="slide-45">
+      <div class="inner">
+        <h2>The to() method</h2>
+        <pre class=" code"><code><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">GoogleHomePage</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Page</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;url&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;http://google.com/ncr&quot;</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>Pages can define a url that defines the page location.</p>
+        <p>The <code><span class="java_plain">to</span><span class="java_separator">()</span><span class="java_plain"></span></code> method sends the browser there and sets that as the current page object.</p>
+        <pre class=" code"><code><span class="java_plain">to&nbsp;</span><span class="java_type">GoogleHomePage</span><span class="java_plain"></span></code></pre>
+        <p>The page url can be relative (will be resolved against a config driven base).</p>
+        <p>There are advanced parameterisation options too.</p>
+      </div>        
+    </section> 
+    <section class="slide" id="slide-46">
+      <div class="inner">
+        <h2>Content based navigation</h2>
+        <pre class=" code"><code><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">FrontPage</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;content&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aboutUsLink</span><span class="java_separator">(</span><span class="java_plain">to</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_type">AboutUsPage</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;div#nav&nbsp;ul&nbsp;li&nbsp;a&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;text</span><span class="java_operator">:</span><span class="java_plain">&nbsp;iStartsWith</span><span class="java_separator">(</span><span class="java_literal">&quot;About&nbsp;Us&quot;</span><span class="java_separator">))</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>When this content is clicked, the underlying page will be changed implicitly.</p>
+        <pre class=" code"><code><span class="java_plain">to&nbsp;</span><span class="java_type">FrontPage</span><span class="java_plain"></span>
+<span class="java_plain">aboutUsLink</span><span class="java_separator">.</span><span class="java_plain">click</span><span class="java_separator">()</span><span class="java_plain"></span>
+<span class="java_plain">page&nbsp;</span><span class="java_keyword">instanceof</span><span class="java_plain">&nbsp;</span><span class="java_type">AboutUsPage</span><span class="java_plain"></span></code></pre>
+      </div>     
+    </section> 
+    <section class="slide" id="slide-47">
+      <div class="inner">
+        <h2>At Checking</h2>
+        <p>The “at checking” mechanism enables fail fast and less debugging.</p>
+        <pre class=" code"><code><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">LoginPage</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Page</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;at&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;h1&quot;</span><span class="java_separator">).</span><span class="java_plain">text</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Please&nbsp;log&nbsp;in&quot;</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">browser</span><span class="java_separator">.</span><span class="java_plain">at&nbsp;</span><span class="java_type">LoginPage</span><span class="java_plain"></span></code></pre>
+        <p>Will throw an exception if every statement of the at check is not true.</p>
+      </div>     
+    </section> 
+    <section class="slide title-slide" id="slide-48">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Feature Tour!</h1> 
+          <p>More info @ http://gebish.org/manual/current</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide" id="slide-49">
+      <div class="inner">
+        <h2>Screenshots and HTML reports</h2>
+        <p>Geb's test adapters automatically do this after each test method.</p>
+        <p>File system location is determined by class name and test name.</p>
+        <pre class=" code"><code><span class="java_plain">target</span><span class="java_operator">/</span><span class="java_plain">test</span><span class="java_operator">-</span><span class="java_plain">reports</span><span class="java_operator">/</span><span class="java_plain">myorg</span><span class="java_operator">/</span><span class="java_plain">tests</span><span class="java_operator">/</span><span class="java_type">SomeTest</span><span class="java_operator">/</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_literal">001</span><span class="java_operator">-</span><span class="java_literal">001</span><span class="java_operator">-</span><span class="java_plain">I&nbsp;test&nbsp;some&nbsp;stuff</span><span class="java_operator">-</span><span class="java_plain">end</span><span class="java_separator">.</span><span class="java_plain">html</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_literal">001</span><span class="java_operator">-</span><span class="java_literal">001</span><span class="java_operator">-</span><span class="java_plain">I&nbsp;test&nbsp;some&nbsp;stuff</span><span class="java_operator">-</span><span class="java_plain">end</span><span class="java_separator">.</span><span class="java_plain">png</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_literal">002</span><span class="java_operator">-</span><span class="java_literal">001</span><span class="java_operator">-</span><span class="java_plain">I&nbsp;test&nbsp;some&nbsp;more&nbsp;stuff</span><span class="java_operator">-</span><span class="java_plain">end</span><span class="java_separator">.</span><span class="java_plain">html</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_literal">002</span><span class="java_operator">-</span><span class="java_literal">001</span><span class="java_operator">-</span><span class="java_plain">I&nbsp;test&nbsp;some&nbsp;more&nbsp;stuff</span><span class="java_operator">-</span><span class="java_plain">end</span><span class="java_separator">.</span><span class="java_plain">png</span></code></pre>
+        <p>Manual grabs can be made any time…</p>
+        <pre class=" code"><code><span class="java_plain">to&nbsp;</span><span class="java_type">SomePage</span><span class="java_plain"></span>
+<span class="java_plain">report&nbsp;</span><span class="java_literal">&quot;at&nbsp;SomePage&quot;</span><span class="java_plain">&nbsp;</span><span class="java_comment">//&nbsp;report&nbsp;label</span>
+<span class="java_plain"></span>
+<span class="java_plain">target</span><span class="java_operator">/</span><span class="java_plain">test</span><span class="java_operator">-</span><span class="java_plain">reports</span><span class="java_operator">/</span><span class="java_plain">myorg</span><span class="java_operator">/</span><span class="java_plain">tests</span><span class="java_operator">/</span><span class="java_type">SomeTest</span><span class="java_operator">/</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_literal">001</span><span class="java_operator">-</span><span class="java_literal">002</span><span class="java_operator">-</span><span class="java_plain">I&nbsp;test&nbsp;some&nbsp;stuff</span><span class="java_operator">-</span><span class="java_plain">at&nbsp;</span><span class="java_type">SomePage</span><span class="java_separator">.</span><span class="java_plain">html</span></code></pre>
+      </div>       
+    </section> 
+    <section class="slide" id="slide-50">
+      <div class="inner">
+        <h2>Driver Management</h2>
+        <p>Geb caches the <code><span class="java_type">WebDriver</span><span class="java_plain"></span></code> instance (per thread) and shares it across test cases.</p>
+        <p>Manages clearing cookies and is configurable.</p>
+        <p>This can be disabled and tuned.</p>
+      </div>     
+    </section> 
+    <section class="slide" id="slide-51">
+      <div class="inner">
+        <h2>Configuration Management</h2>
+        <p>Looks for <code><span class="java_type">GebConfig</span><span class="java_plain"></span></code> class or <code><span class="java_type">GebConfig</span><span class="java_separator">.</span><span class="java_plain">groovy</span></code> file (or class) on classpath.</p>
+        <pre class=" code"><code><span class="java_plain">driver&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">FirefoxDriver</span><span class="java_separator">()</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">waiting&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;timeout&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">2</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;slow&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;timeout&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">100</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">reportsDir&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;geb-reports&quot;</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">environments&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;chrome&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;driver&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;chrome&quot;</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p><code><span class="java_plain">grails&nbsp;</span><span class="java_operator">-</span><span class="java_type">Dgeb</span><span class="java_separator">.</span><span class="java_plain">env</span><span class="java_operator">=</span><span class="java_plain">chrome&nbsp;test&nbsp;functional</span><span class="java_operator">:</span><span class="java_plain"></span></code></p>
+      </div>     
+    </section> 
+    <section class="slide" id="slide-52">
+      <div class="inner">
+        <h2>Adhoc waiting</h2>
+        <p>The <code><span class="java_plain">waitFor</span></code> method can be used anywhere to wait for any condition to be true.</p>
+        <p>Groovy's flexible notion of “truth” makes this powerful.</p>
+        <pre class=" code"><code><span class="java_plain">waitFor&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;p.errorMsg&quot;</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">}.</span><span class="java_plain">text</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Error!&quot;</span><span class="java_plain"></span>
+<span class="java_plain">waitFor&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;p.errorMsg&quot;</span><span class="java_separator">).</span><span class="java_plain">text</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain">&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Error!&quot;</span><span class="java_plain"></span></code></pre>
+        <p>Waiting options are configurable…</p>
+        <pre class=" code"><code><span class="java_plain">waitFor</span><span class="java_separator">(</span><span class="java_plain">timeout</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_literal">10</span><span class="java_separator">,</span><span class="java_plain">&nbsp;retry</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_literal">0.1</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;…&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">waitFor</span><span class="java_separator">(</span><span class="java_literal">&quot;fast&quot;</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;…&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>Defaults and named presets controlled by configuration.</p>
+      </div>        
+    </section> 
+    <section class="slide" id="slide-53">
+      <div class="inner">
+        <h2>Implicit (power) Assertions</h2>
+        <p>Implicitly turns certain statements into assertions. For example, when waiting:</p>
+        <pre class=" code"><code><span class="java_plain">waitFor&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;title&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Page&nbsp;Title&quot;</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">waitFor&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;</span><span class="java_keyword">assert</span><span class="java_plain">&nbsp;title&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Page&nbsp;Title&quot;</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain">&nbsp;</span><span class="java_comment">//&nbsp;equivalent&nbsp;(sorta)</span></code></pre>
+        <p>Gives informative error message…</p>
+        <pre class=" code"><code><span class="java_plain">geb</span><span class="java_separator">.</span><span class="java_plain">waiting</span><span class="java_separator">.</span><span class="java_type">WaitTimeoutException</span><span class="java_operator">:</span><span class="java_plain">&nbsp;condition&nbsp;did&nbsp;not&nbsp;pass&nbsp;</span><span class="java_keyword">in</span><span class="java_plain">&nbsp;</span><span class="java_literal">5.0</span><span class="java_plain">&nbsp;seconds&nbsp;</span><span class="java_separator">(</span><span class="java_plain">failed&nbsp;with&nbsp;exception</span><span class="java_separator">)</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;…</span>
+<span class="java_type">Caused</span><span class="java_plain">&nbsp;by</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_type">Assertion</span><span class="java_plain">&nbsp;failed</span><span class="java_operator">:</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">title&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Page&nbsp;Title&quot;</span><span class="java_plain"></span>
+<span class="java_operator">|</span><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_operator">|</span><span class="java_plain"></span>
+<span class="java_operator">|</span><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_literal">false</span><span class="java_plain"></span>
+<span class="java_type">Something</span><span class="java_plain">&nbsp;</span><span class="java_keyword">else</span><span class="java_plain"></span></code></pre>
+      </div>      
+    </section> 
+    <section class="slide" id="slide-54">
+      <div class="inner">
+        <h2>Implicit (power) Assertions</h2>
+        <p>Applies to waiting content…</p>
+        <pre class=" code"><code><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">DynamicPage</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Page</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;content&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errorMsg</span><span class="java_separator">(</span><span class="java_plain">wait</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_literal">true</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;p.errorMsg&quot;</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>And page “at checks”</p>
+        <pre class=" code"><code><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">GoogleHomePage</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Page</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;at&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;title&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Google&quot;</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+      </div>      
+    </section> 
+    <section class="slide" id="slide-55">
+      <div class="inner">
+        <h2>Direct Downloading</h2>
+        <p>Examine binary resources easily, with the session state.</p>
+        <pre class=" code"><code><span class="java_type">Browser</span><span class="java_separator">.</span><span class="java_plain">drive&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;go&nbsp;</span><span class="java_literal">&quot;http://myapp.com/login&quot;</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;login</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;username&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;me&quot;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;password&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;secret&quot;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;login</span><span class="java_separator">().</span><span class="java_plain">click</span><span class="java_separator">()</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">def</span><span class="java_plain">&nbsp;downloadLink&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;a.pdf-download-link&quot;</span><span class="java_separator">)</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;now&nbsp;get&nbsp;the&nbsp;pdf&nbsp;bytes&nbsp;(that&nbsp;requires&nbsp;authentication)</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">def</span><span class="java_plain">&nbsp;bytes&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;downloadBytes</span><span class="java_separator">(</span><span class="java_plain">downloadLink</span><span class="java_separator">.</span><span class="java_plain">@href</span><span class="java_separator">)</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>Also <code><span class="java_plain">downloadStream</span><span class="java_separator">()</span><span class="java_plain"></span></code> and <code><span class="java_plain">downloadText</span><span class="java_separator">()</span><span class="java_plain"></span></code>.</p>
+      </div>     
+    </section> 
+    <section class="slide" id="slide-56">
+      <div class="inner">
+        <h2>Interaction DSL (Actions)</h2>
+        <p>DSL for building actions…</p>
+        <pre class=" code"><code><span class="java_keyword">import</span><span class="java_plain">&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;org</span><span class="java_separator">.</span><span class="java_plain">openqa</span><span class="java_separator">.</span><span class="java_plain">selenium</span><span class="java_separator">.</span><span class="java_type">Keys</span><span class="java_separator">.</span><span class="java_operator">*</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">SomeClass</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Page</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;content&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;someContent&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;div.someContent&quot;</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">interact&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;keyDown&nbsp;SHIFT</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;clickAndHold&nbsp;someContent</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;moveToElement&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">&quot;div.dropZone&quot;</span><span class="java_separator">)</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;keyUp&nbsp;SHIFT</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;release</span><span class="java_separator">()</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>Builds on top of WebDriver's <code><span class="java_type">Actions</span><span class="java_plain"></span></code> support.</p>
+      </div>     
+    </section> 
+    <section class="slide" id="slide-57">
+      <div class="inner">
+        <h2>Form Shortcuts</h2>
+        <p>Geb makes it easy to deal with all form controls. Read and write <code><span class="java_plain">input</span></code>s like properties.</p>
+        <p>Finds first <code><span class="java_plain">input</span></code>|<code><span class="java_plain">select</span></code>|<code><span class="java_plain">textarea</span></code> with the given name.</p>
+        <pre class=" code"><code><span class="java_type">Browser</span><span class="java_separator">.</span><span class="java_plain">drive&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;firstName&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Luke&quot;</span><span class="java_plain">&nbsp;</span><span class="java_comment">//&nbsp;write</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;firstName&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Luke&quot;</span><span class="java_plain">&nbsp;</span><span class="java_comment">//&nbsp;read</span>
+<span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;someCheckbox&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">true</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;someSelect&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;some&nbsp;option&nbsp;name&nbsp;or&nbsp;value&quot;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;someMultiSelect&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">[</span><span class="java_literal">&quot;selected1&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;selected2&quot;</span><span class="java_separator">]</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>Unified API for all element types.</p>
+      </div>      
+    </section> 
+    <section class="slide" id="slide-58">
+      <div class="inner">
+        <h2>JavaScript Interface</h2>
+        <pre class=" code"><code><span class="java_operator">&lt;</span><span class="java_plain">script</span><span class="java_operator">&gt;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;globalVar</span><span class="java_separator">;</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;globalFunction</span><span class="java_separator">(</span><span class="java_plain">arg1</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;…</span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_operator">&lt;/</span><span class="java_plain">script</span><span class="java_operator">&gt;</span><span class="java_plain"></span></code></pre>
+        <p>Can access global JS variables and functions with Groovy code…</p>
+        <pre class=" code"><code><span class="java_plain">js</span><span class="java_separator">.</span><span class="java_plain">globalVar&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">1</span><span class="java_plain"></span>
+<span class="java_keyword">assert</span><span class="java_plain">&nbsp;js</span><span class="java_separator">.</span><span class="java_plain">globalVar&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">1</span><span class="java_plain"></span>
+<span class="java_plain"></span>
+<span class="java_plain">js</span><span class="java_separator">.</span><span class="java_plain">globalFunction</span><span class="java_separator">(</span><span class="java_literal">&quot;the&nbsp;arg&quot;</span><span class="java_separator">)</span><span class="java_plain"></span></code></pre>
+      </div>     
+    </section> 
+    <section class="slide" id="slide-59">
+      <div class="inner">
+        <h2>jQuery Adapter</h2>
+        <p>Geb makes it easy to get a jQuery object for content.</p>
+        <pre class=" code"><code><span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">&quot;input&quot;</span><span class="java_separator">).</span><span class="java_plain">jquery</span><span class="java_separator">.</span><span class="java_plain">keydown</span><span class="java_separator">()</span><span class="java_plain"></span></code></pre>
+        <p>Useful for simulating interactions that are difficult/unreliable with the WebDriver API.</p>
+        <p>The <code><span class="java_plain">jquery</span></code> property is a proxy for an equivalent jQuery object in the JS runtime.</p>
+        <p><strong>Not to be abused!</strong></p>
+      </div>       
+    </section> 
+    <section class="slide" id="slide-60">
+      <div class="inner">
+        <h2>Frame / Window Support</h2>
+        <p>Jumping to frames temporarily…</p>
+        <pre class=" code"><code><span class="java_plain">withFrame</span><span class="java_separator">(</span><span class="java_plain">$</span><span class="java_separator">(</span><span class="java_literal">'#footer'</span><span class="java_separator">))</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;</span><span class="java_keyword">assert</span><span class="java_plain">&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">'span'</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">'frame&nbsp;text'</span><span class="java_plain">&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>Focussing on an open window…</p>
+        <pre class=" code"><code><span class="java_plain">withWindow</span><span class="java_separator">({</span><span class="java_plain">&nbsp;title&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;Another&nbsp;Window&quot;</span><span class="java_plain">&nbsp;</span><span class="java_separator">})</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;do&nbsp;some&nbsp;stuff&nbsp;with&nbsp;the&nbsp;window</span>
+<span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_comment">//&nbsp;back&nbsp;to&nbsp;the&nbsp;previous&nbsp;window</span></code></pre>
+        <p>Managing opening new windows…</p>
+        <pre class=" code"><code><span class="java_plain">withNewWindow</span><span class="java_separator">({</span><span class="java_plain">&nbsp;$</span><span class="java_separator">(</span><span class="java_literal">'a'</span><span class="java_separator">).</span><span class="java_plain">click</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">})</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;do&nbsp;some&nbsp;stuff&nbsp;with&nbsp;the&nbsp;new&nbsp;window</span>
+<span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_comment">//&nbsp;back&nbsp;to&nbsp;the&nbsp;previous&nbsp;window</span></code></pre>
+      </div>        
+    </section> 
+    <section class="slide title-slide" id="slide-61">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Demo</h1> 
+          <p>Remote Browsers<br /> http://code.google.com/p/selenium/wiki/RemoteWebDriverServer</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide title-slide" id="slide-62">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Thank you</h1> 
+          <p>http://www.gebish.org</p> 
+        </div>
+      </div>  
+    </section>   
+    <div class="deck-notes"> 
+      <div class="deck-notes-header">
+        Slide Notes…
+      </div> 
+      <div class="deck-notes-container"></div> 
+    </div> 
+  </body>
+</html>

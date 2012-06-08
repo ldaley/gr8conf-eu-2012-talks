@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/doc.iml" filepath="$PROJECT_DIR$/doc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/geb.iml" filepath="$PROJECT_DIR$/geb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/geb-core.iml" filepath="$PROJECT_DIR$/geb-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/geb-core-tests.iml" filepath="$PROJECT_DIR$/geb-core-tests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/geb-easyb.iml" filepath="$PROJECT_DIR$/geb-easyb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/geb-grails.iml" filepath="$PROJECT_DIR$/geb-grails.iml" />
+      <module fileurl="file://$PROJECT_DIR$/geb-implicit-assertions.iml" filepath="$PROJECT_DIR$/geb-implicit-assertions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/geb-junit3.iml" filepath="$PROJECT_DIR$/geb-junit3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/geb-junit4.iml" filepath="$PROJECT_DIR$/geb-junit4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/geb-spock.iml" filepath="$PROJECT_DIR$/geb-spock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/geb-testng.iml" filepath="$PROJECT_DIR$/geb-testng.iml" />
+      <module fileurl="file://$PROJECT_DIR$/manual.iml" filepath="$PROJECT_DIR$/manual.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module.iml" filepath="$PROJECT_DIR$/module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/site-app.iml" filepath="$PROJECT_DIR$/site-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-support.iml" filepath="$PROJECT_DIR$/test-support.iml" />
+    </modules>
+  </component>
+</project>
+

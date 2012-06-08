@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="bcprov-jdk15-135">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-8/filestore/bouncycastle/bcprov-jdk15/135/jar/af01cb285d3b75b6c6149e84fbc46cadd2c6685f/bcprov-jdk15-135.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

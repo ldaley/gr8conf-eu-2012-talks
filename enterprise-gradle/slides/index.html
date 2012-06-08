@@ -1,0 +1,316 @@
+<html>
+  <head>
+    <meta charset="utf-8" /> 
+    <title>Gradle</title> 
+    <script src="./deckjs/jquery-1.7.min.js"></script> 
+    <script src="./deckjs/modernizr.custom.js"></script> 
+    <script src="./deckjs/core/deck.core.js"></script> 
+    <link rel="stylesheet" href="./deckjs/core/deck.core.css" /> 
+    <link rel="stylesheet" href="./deckjs/themes/transition/horizontal-slide.css" /> 
+    <script src="./deckjs/extensions/hash/deck.hash.js"></script> 
+    <script src="./deckjs/extensions/notes/deck.notes.js"></script> 
+    <script src="./deckjs/extensions/clone/deck.clone.js"></script> 
+    <script src="./deckjs/extensions/scale-selector/deck.scale-selector.js"></script> 
+    <link rel="stylesheet" href="./deckjs/extensions/scale-selector/deck.scale-selector.css" /> 
+    <link rel="stylesheet" href="./style/code.less.css" /> 
+    <link rel="stylesheet" href="./style/slideshow.less.css" /> 
+    <script src="./init.js"></script>
+  </head> 
+  <body class=" deck-container"> 
+    <section class="slide first-slide title-slide">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Gradle</h1> 
+          <p>The Enterprise Automation Tool</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>About Me</h2>
+        <ul> 
+          <li>Principal Engineer @ <a href="http://gradleware.com/">Gradleware</a></li> 
+          <li><a href="mailto:luke.daley@gradleware.com">luke.daley@gradleware.com</a></li> 
+          <li><a href="http://twitter.com/ldaley">@ldaley</a></li> 
+        </ul>
+      </div>   
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>What we will talk about</h2>
+        <ul> 
+          <li>Intro to Gradle</li> 
+          <li>Enterprise - a word people like to say</li> 
+          <li>Gradle “Enterprise” features</li> 
+          <li>Looking forward…</li> 
+        </ul>
+      </div>   
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Gradle</h2>
+        <blockquote> 
+          <p>Gradle is build automation <em>evolved</em>. Gradle can automate the building, testing, publishing, deployment and more of software packages or other types of projects such as generated static websites, generated documentation or indeed anything else.</p> 
+        </blockquote>
+        <p>&raquo; <a href="http://www.gradle.org">http://www.gradle.org</a>, 2012</p>
+      </div>    
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Gradle</h2>
+        <p>Fundamentally…</p>
+        <ul> 
+          <li>JVM based, general purpose automation tool</li> 
+          <li>Java core, Groovy outer layers (user code is Groovy)</li> 
+          <li>Mixed declarative/imperative</li> 
+          <li>Conventional, yet flexible</li> 
+          <li>Simple is simple, nearly anything is possible</li> 
+        </ul>
+      </div>    
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Gradle</h2>
+        <p>You cannot completely avoid complexity in automation, so you better embrace it.</p>
+        <p>Gradle is an <em>extensible build language</em>, which allows <strong>you</strong> to abstract/hide <strong>your personal</strong> complexity.</p>
+        <p>Example…</p>
+        <pre class=" code"><code><span class="java_plain">apply&nbsp;plugin</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_literal">'editions'</span><span class="java_plain">&nbsp;</span>
+<span class="java_plain"></span>
+<span class="java_plain">productEditions&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;</span>
+<span class="java_plain">&nbsp;&nbsp;enterprise&nbsp;core</span><span class="java_separator">,</span><span class="java_plain">&nbsp;plugins</span><span class="java_separator">,</span><span class="java_plain">&nbsp;powerAddons&nbsp;</span>
+<span class="java_plain">&nbsp;&nbsp;opensource&nbsp;core</span><span class="java_separator">,</span><span class="java_plain">&nbsp;plugins</span><span class="java_separator">,</span><span class="java_plain">&nbsp;openApi&nbsp;</span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+      </div>      
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Gradle</h2>
+        <p>Automation paralysis <strong>will</strong> kill you.</p>
+        <ul> 
+          <li>Time to market is a competitive advantage</li> 
+          <li>Lean, Agile and Continuous Delivery tell us this</li> 
+          <li>Entropy happens</li> 
+          <li>Automation is <strong>critical</strong></li> 
+        </ul>
+        <p>Gradle's goal is to be the toolkit that allows you to keep your automation efficient, <strong>tailored</strong> and well organised.</p>
+        <p>On top of this, we provide out-of-the-box solutions for conventional cases.</p>
+      </div>      
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Gradle</h2>
+        <p>Gradle has innovative approaches to enabling <strong>malleable</strong> defaults/conventions.</p>
+        <ul> 
+          <li>Lazy evaluation (e.g. closures, factories)</li> 
+          <li>Declarative model elements (e.g. <code><span class="java_plain">sourceSets</span></code>)</li> 
+          <li>Convention mapping</li> 
+        </ul>
+      </div>    
+    </section> 
+    <section class="slide title-slide">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Enterprise</h1> 
+          <p>a word people like to say</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Enterprise?</h2>
+        <p>Usually means…</p>
+        <ul> 
+          <li>Scale 
+            <ul> 
+              <li>Team size</li> 
+              <li>Number of components</li> 
+            </ul></li> 
+          <li>Heterogeneous</li> 
+          <li>Legacy</li> 
+          <li>Complexity</li> 
+          <li>Conformance</li> 
+          <li>Productivity == $$$</li> 
+        </ul>
+      </div>    
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Enterprise?</h2>
+        <p>Change is costly.</p>
+        <p>You often need to automate what you have, not what you want.</p>
+      </div>    
+    </section> 
+    <section class="slide title-slide">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Features!</h1> 
+          <p>Gradle Enterprisey Stuff</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide title-slide">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Incremental Build</h1> 
+          <p>Less is more</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide title-slide">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Autowiring</h1> 
+          <p>global properties are global properties</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide title-slide">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Dependency Management</h1> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>The Cache</h2>
+        <ul> 
+          <li>Concurrent read/write safe (multi process)</li> 
+          <li>Source location aware</li> 
+          <li>Rich metadata (checksums, ETags, modification dates)</li> 
+          <li>Local artefact reuse (old gradle versions, maven local)</li> 
+          <li>Fetching is optimised for HTTP</li> 
+        </ul>
+        <p><strong>Local cache state does not affect reproducibility.</strong></p>
+      </div>    
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Conflict Resolution</h2>
+        <p>Force a failure if there is any conflict.</p>
+        <pre class=" code"><code><span class="java_plain">configurations</span><span class="java_separator">.</span><span class="java_plain">compile&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;resolutionStrategy&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;failOnVersionConflict</span><span class="java_separator">()</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>Force a module, if it happens to appear.</p>
+        <pre class=" code"><code><span class="java_plain">configurations</span><span class="java_separator">.</span><span class="java_plain">compile&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;resolutionStrategy&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;force&nbsp;</span><span class="java_literal">'org.someorg:somelib:1.0'</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+      </div>      
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Dynamic/Changing Versions</h2>
+        <p>Tune the <strong>changing</strong> module TTL (e.g. <code><span class="java_literal">'someorg:somelib:1.0-SNAPSHOT'</span><span class="java_plain"></span></code>)</p>
+        <pre class=" code"><code><span class="java_plain">configurations</span><span class="java_separator">.</span><span class="java_plain">compile&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;resolutionStrategy&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;cacheChangingModulesFor&nbsp;</span><span class="java_literal">0</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">'seconds'</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>Tune the <strong>dynamic</strong> module TTL (e.g. <code><span class="java_literal">'someorg:somelib:1.+'</span><span class="java_plain"></span></code>)</p>
+        <pre class=" code"><code><span class="java_plain">configurations</span><span class="java_separator">.</span><span class="java_plain">compile&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;resolutionStrategy&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;cacheDynamicVersionsFor&nbsp;</span><span class="java_literal">10</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">'minutes'</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+      </div>      
+    </section> 
+    <section class="slide title-slide">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Custom Build Language</h1> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Standardization</h2>
+        <p>Gradle distributions can be customised with enterprise specific init scripts. Gradle will load all <code><span class="java_plain">$GRADLE_HOME</span><span class="java_operator">/</span><span class="java_plain">init</span><span class="java_separator">.</span><span class="java_plain">d</span><span class="java_comment">/*</span></code> files. </p>
+        <p>You can have the <strong>Gradle Wrapper</strong> download your own modified distribution.</p>
+        <pre class=" code"><code><span class="java_plain">task&nbsp;wrapper</span><span class="java_separator">(</span><span class="java_plain">type</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_type">Wrapper</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span>
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;distributionUrl&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;http://myorg.com/custom-gradle-1.0.zip&quot;</span><span class="java_plain"></span>
+<span class="java_separator">}</span><span class="java_plain"></span></code></pre>
+        <p>Init scripts can:</p>
+        <ul> 
+          <li>Apply plugins</li> 
+          <li>Restrict things (e.g. usage of certain repositories)</li> 
+          <li>Establish environment parameters</li> 
+        </ul>
+      </div>       
+    </section> 
+    <section class="slide title-slide">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Looking Forward</h1> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Modular Software</h2>
+        <p><img src="img/modules.png" alt="modules" /></p>
+      </div>   
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Modular Software</h2>
+        <ul> 
+          <li>Integrate with HEAD/trunk</li> 
+          <li>Shield from bad snapshots</li> 
+          <li>Testing dirty working copy</li> 
+          <li>Exploration</li> 
+        </ul>
+        <p>Process needs to map to organisational structure and culture.</p>
+        <p>There is no one-size-fits-all here.</p>
+      </div>     
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Dependency Descriptors</h2>
+        <p>What we have today is inadequate.</p>
+        <ul> 
+          <li>Variants? (e.g. groovy-1.7 vs. groovy-1.8)</li> 
+          <li>API vs. impl?</li> 
+          <li>Build vs. Use</li> 
+        </ul>
+        <p>We need a new way to think about this.</p>
+      </div>     
+    </section> 
+    <section class="slide">
+      <div class="inner">
+        <h2>Scalability</h2>
+        <p>The only way to scale is to do less.</p>
+        <ul> 
+          <li>Partial configuration</li> 
+          <li>Distributed artifact reuse</li> 
+          <li>Dynamic project structures</li> 
+        </ul>
+      </div>    
+    </section> 
+    <section class="slide title-slide">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>STS Plugin</h1> 
+          <p>Peter Niederwieser</p> 
+        </div>
+      </div>  
+    </section> 
+    <section class="slide title-slide">
+      <div class="inner">
+        <div class="title-slide-content"> 
+          <h1>Q&amp;A</h1> 
+          <p>Yes, Gradle 1.0 will be released very soon.</p> 
+        </div>
+      </div>  
+    </section>   
+    <div class="deck-notes"> 
+      <div class="deck-notes-header">
+        Slide Notes…
+      </div> 
+      <div class="deck-notes-container"></div> 
+    </div> 
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="jna-3.3.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-8/filestore/net.java.dev.jna/jna/3.3.0/jar/9928b4df8863584ff12716ebad7a7e88996dbe4b/jna-3.3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-8/filestore/net.java.dev.jna/jna/3.3.0/source/59cc8ae8bfb9b187eb0e8aa17362a2b34e713104/jna-3.3.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
